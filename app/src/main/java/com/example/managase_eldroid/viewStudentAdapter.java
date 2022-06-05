@@ -26,7 +26,7 @@ public class viewStudentAdapter extends RecyclerView.Adapter<viewStudentAdapter.
     @NonNull
     @Override
     public viewStudentAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new viewStudentAdapter.MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_view_student,parent,false));
+        return new viewStudentAdapter.MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.student_single,parent,false));
     }
 
     @Override
@@ -44,7 +44,7 @@ public class viewStudentAdapter extends RecyclerView.Adapter<viewStudentAdapter.
         holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.itemDelete(position);
+                listener.itemDelete(position,modelList.get(position));
             }
         });
     }
@@ -56,7 +56,7 @@ public class viewStudentAdapter extends RecyclerView.Adapter<viewStudentAdapter.
 
     public interface itemOnClick
     {
-        void itemDelete(int pos);
+        void itemDelete(int pos, viewStudentSingleModel model);
         void itemEdit(viewStudentSingleModel model);
     }
 

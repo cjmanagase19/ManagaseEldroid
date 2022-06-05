@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -33,10 +34,14 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
@@ -51,6 +56,7 @@ public class createAccountStudent extends AppCompatActivity {
     Uri uri1;
     Bitmap bitmap;
     ImageView imageView;
+    String studentID;
     Dialog option;
     StorageReference storageReference;
     ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(),
@@ -88,8 +94,46 @@ public class createAccountStudent extends AppCompatActivity {
         submit = (Button) findViewById(R.id.btn_submit_student);
         imageView = (ImageView) findViewById(R.id.img_profile_student);
 
+        Bundle bundle = getIntent().getExtras();
         verifyPermissions();
+        if(bundle!=null)
+        {
+            String UID = bundle.getString("UID");
+            FirebaseDatabase.getInstance().getReference().child("student").orderByKey().equalTo(UID).addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                        etAddress.setText(snapshot.child("address").getValue().toString());
+                        etAge.setText(snapshot.child("age").getValue().toString());
+                        etCourse.setText(snapshot.child("course").getValue().toString());
+                        etFirstName.setText(snapshot.child("firstName").getValue().toString());
+                        etLastName.setText(snapshot.child("lastName").getValue().toString());
+                        etMiddleName.setText(snapshot.child("middleName").getValue().toString());
+                        studentID = snapshot.child("studentID").getValue().toString();
+                        etYear.setText(snapshot.child("year").getValue().toString());
+                        Picasso.get().load(snapshot.child("profileUrl").getValue().toString()).into(imageView);
+                }
 
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,9 +173,13 @@ public class createAccountStudent extends AppCompatActivity {
                     public void onSuccess(Uri uri) {
 
                         Random rnd = new Random();
-                        int random = rnd.nextInt(100000);
+                        int random;
+                        if(studentID.contains(""))
+                        {
+                           studentID = ""+rnd.nextInt(100000);
+                        }
                         uploadImage uploadImage = new uploadImage("studentProfile", uri.toString());
-                        studentModel model = new studentModel(etFirstName.getText().toString(),etLastName.getText().toString(),etMiddleName.getText().toString(),etAge.getText().toString(),etAddress.getText().toString(),etCourse.getText().toString(),etYear.getText().toString(),uploadImage.getImageUrl(),random+"");
+                        studentModel model = new studentModel(etFirstName.getText().toString(),etLastName.getText().toString(),etMiddleName.getText().toString(),etAge.getText().toString(),etAddress.getText().toString(),etCourse.getText().toString(),etYear.getText().toString(),uploadImage.getImageUrl(),studentID+"");
                         FirebaseDatabase.getInstance().getReference().child("student").child(user.getUid()).setValue(model);
 
                     }
@@ -145,8 +193,7 @@ public class createAccountStudent extends AppCompatActivity {
         }).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                Intent intent = new Intent(createAccountStudent.this,viewStudent.class);
-                startActivity(intent);
+
             }
         });
     }

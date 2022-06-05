@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ManagaseEldroid">
         <activity
+            android:name=".loginActivity"
+            android:exported="true" />
+        <activity
             android:name=".viewStudent"
             android:exported="true" />
         <activity
