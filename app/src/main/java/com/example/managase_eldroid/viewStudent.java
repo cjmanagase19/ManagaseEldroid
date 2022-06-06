@@ -43,6 +43,7 @@ public class viewStudent extends AppCompatActivity {
                 startActivity(login);
             }
         });
+
         FirebaseDatabase.getInstance().getReference().child("student").orderByKey().addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
