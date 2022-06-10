@@ -44,7 +44,7 @@ public class viewStudentAdapter extends RecyclerView.Adapter<viewStudentAdapter.
         holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.itemDelete(position,modelList.get(position));
+                listener.itemDelete(holder.getAdapterPosition(),modelList.get(holder.getAdapterPosition()));
             }
         });
     }

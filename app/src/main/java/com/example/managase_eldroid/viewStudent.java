@@ -54,6 +54,7 @@ public class viewStudent extends AppCompatActivity {
                 viewStudentSingleModel model = new viewStudentSingleModel(name,address,ID,url,snapshot.getKey());
                 modelList.add(model);
                 recyclerView.setAdapter(adapter);
+
             }
 
             @Override
@@ -79,13 +80,15 @@ public class viewStudent extends AppCompatActivity {
         adapter = new viewStudentAdapter(modelList, new viewStudentAdapter.itemOnClick() {
             @Override
             public void itemDelete(int pos, viewStudentSingleModel model) {
-                FirebaseDatabase.getInstance().getReference().child("student").child(model.getUID()).addValueEventListener(new ValueEventListener() {
+                FirebaseDatabase.getInstance().getReference().child("student").orderByKey().equalTo(model.getUID()).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for(DataSnapshot dataSnapshot:snapshot.getChildren())
                         {
                             dataSnapshot.getRef().removeValue();
                             adapter.notifyItemRemoved(pos);
+                            modelList.remove(pos);
+                            adapter.notifyDataSetChanged();
                         }
                     }
 

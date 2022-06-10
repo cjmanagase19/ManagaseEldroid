@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -68,10 +69,18 @@ public class signUpStudent1 extends AppCompatActivity {
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String pass = etPassword.getText().toString();
-                String user = etUserName.getText().toString();
-                Log.d("nisud",pass);
-                createUser(user,pass);
+                if(etPassword.getText().toString().isEmpty()||etUserName.getText().toString().isEmpty())
+                {
+                    Toast.makeText(signUpStudent1.this, "Please fill the user and password entry", Toast.LENGTH_SHORT).show();
+
+                }
+                else
+                {
+                    String pass = etPassword.getText().toString();
+                    String user = etUserName.getText().toString();
+                    Log.d("nisud",pass);
+                    createUser(user,pass);
+                }
 
             }
         });
@@ -88,11 +97,11 @@ public class signUpStudent1 extends AppCompatActivity {
                         } else {
                             try {
                                 throw task.getException();
-                            } catch (FirebaseAuthWeakPasswordException e) {
-
                             } catch (FirebaseAuthUserCollisionException e) {
+                                Toast.makeText(signUpStudent1.this, "The email is already use", Toast.LENGTH_SHORT).show();
 
                             } catch (Exception e) {
+                                Toast.makeText(signUpStudent1.this, "Unexpected error", Toast.LENGTH_SHORT).show();
 
                             }
 

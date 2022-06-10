@@ -69,6 +69,7 @@ public class createAccountStudent extends AppCompatActivity {
                 public void onActivityResult(Uri uri) {
                     imageView.setImageURI(uri);
                     uri1 = uri;
+
                 }
             });
 
@@ -85,9 +86,8 @@ public class createAccountStudent extends AppCompatActivity {
         etAge = (EditText) findViewById(R.id.et_age_student2);
         submit = (Button) findViewById(R.id.btn_submit_student);
         imageView = (ImageView) findViewById(R.id.img_profile_student);
-
-        Bundle bundle = getIntent().getExtras();
         verifyPermissions();
+        Bundle bundle = getIntent().getExtras();
         if(bundle!=null)
         {
             String UID = bundle.getString("UID");
@@ -112,7 +112,6 @@ public class createAccountStudent extends AppCompatActivity {
                 public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
                 }
-
                 @Override
                 public void onChildRemoved(@NonNull DataSnapshot snapshot) {
 

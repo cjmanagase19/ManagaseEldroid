@@ -82,9 +82,13 @@ public class SignUpUser extends AppCompatActivity {
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(etPassword.getText().toString().contains("")||etUserName.getText().toString().contains(""))
+                if(etPassword.getText().toString().isEmpty())
                 {
-                    Log.d("ywa","ka");
+
+                }
+                else if(etUserName.getText().toString().isEmpty())
+                {
+
                 }
                 else
                 {

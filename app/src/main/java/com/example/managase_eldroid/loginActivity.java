@@ -48,7 +48,12 @@ public class loginActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loginUser(user.getText().toString(),password.getText().toString());
+                if(!password.getText().toString().isEmpty()&&!user.getText().toString().isEmpty()) {
+                    loginUser(user.getText().toString(), password.getText().toString());
+                }
+                else {
+                    Toast.makeText(loginActivity.this, "Please fulfil all entry", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -64,6 +69,8 @@ public class loginActivity extends AppCompatActivity {
                             startActivity(intent);
 
                         } else {
+                            Toast.makeText(loginActivity.this, "Wrong password or email/gmail", Toast.LENGTH_SHORT).show();
+
                             // If sign in fails, display a message to the user.
                         }
                     }
