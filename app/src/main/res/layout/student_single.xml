@@ -13,31 +13,46 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_delete_single"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/tv_id_student" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_author" />
 
     <TextView
-        android:id="@+id/tv_name_student"
+        android:id="@+id/tv_item_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_item_price"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_address_student"
+        android:id="@+id/tv_item_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:text="TextView"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_item_author"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_name" />
+
+    <TextView
+        android:id="@+id/tv_item_author"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_item_date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name_student" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_price" />
 
     <TextView
-        android:id="@+id/tv_id_student"
+        android:id="@+id/tv_item_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -46,14 +61,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/tv_address_student" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_author" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tv_name_student"
+        app:layout_constraintEnd_toStartOf="@+id/tv_item_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -66,5 +81,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_edit_student"
-        app:layout_constraintTop_toBottomOf="@+id/tv_id_student" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_author" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

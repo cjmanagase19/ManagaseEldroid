@@ -54,37 +54,13 @@
         app:layout_constraintTop_toBottomOf="@+id/et_middleName_student" />
 
     <EditText
-        android:id="@+id/et_course_student"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Course"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/et_year_student2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <EditText
-        android:id="@+id/et_year_student2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Year"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/btn_submit_student"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_course_student" />
-
-    <EditText
         android:id="@+id/et_age_student2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Age"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/btn_submit_student"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_address_student" />
@@ -101,16 +77,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_firstName_student" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="School info"
-        app:layout_constraintBottom_toTopOf="@+id/et_course_student"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_age_student2" />
-
     <Button
         android:id="@+id/btn_submit_student"
         android:layout_width="wrap_content"
@@ -119,5 +85,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_year_student2" />
+        app:layout_constraintTop_toBottomOf="@+id/et_age_student2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

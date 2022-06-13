@@ -1,34 +1,21 @@
 package com.example.managase_eldroid;
 
-public class studentModel {
+public class createAccountModel {
     private String firstName;
     private String lastName;
     private String middleName;
     private String age;
     private String address;
-    private String course;
-    private String year;
     private String profileUrl;
-    private String studentID;
 
-    public studentModel(String firstName, String lastName, String middleName, String age, String address, String course, String year, String profileUrl,String studentID) {
+    public createAccountModel(String firstName, String lastName, String middleName, String age, String address, String profileUrl ){
         this.firstName = firstName;
         this.lastName = lastName;
         this.middleName = middleName;
         this.age = age;
         this.address = address;
-        this.course = course;
-        this.year = year;
         this.profileUrl = profileUrl;
-        this.studentID = studentID;
-    }
 
-    public String getStudentID() {
-        return studentID;
-    }
-
-    public void setStudentID(String studentID) {
-        this.studentID = studentID;
     }
 
     public String getFirstName() {
@@ -71,21 +58,6 @@ public class studentModel {
         this.address = address;
     }
 
-    public String getCourse() {
-        return course;
-    }
-
-    public void setCourse(String course) {
-        this.course = course;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
 
     public String getProfileUrl() {
         return profileUrl;

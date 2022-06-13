@@ -15,10 +15,10 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class viewStudentAdapter extends RecyclerView.Adapter<viewStudentAdapter.MyViewHolder> {
-    List<viewStudentSingleModel> modelList;
+    List<viewItemModel> modelList;
     itemOnClick listener;
 
-    public viewStudentAdapter(List<viewStudentSingleModel> modelList, itemOnClick listener) {
+    public viewStudentAdapter(List<viewItemModel> modelList, itemOnClick listener) {
         this.modelList = modelList;
         this.listener = listener;
     }
@@ -31,10 +31,11 @@ public class viewStudentAdapter extends RecyclerView.Adapter<viewStudentAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull viewStudentAdapter.MyViewHolder holder, int position) {
-        holder.nameTV.setText(modelList.get(position).getName());
-        holder.addressTV.setText(modelList.get(position).getAddress());
-        holder.IDTV.setText(modelList.get(position).getID());
-        Picasso.get().load(modelList.get(position).getUrl()).into(holder.imageView);
+        holder.nameTV.setText(modelList.get(position).getTitle());
+        holder.authorEt.setText(modelList.get(position).getAuthor());
+        holder.priceEt.setText(modelList.get(position).getPrice());
+        Picasso.get().load(modelList.get(position).getURL()).into(holder.imageView);
+        holder.dateEt.setText(modelList.get(position).getDate());
         holder.editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,21 +57,22 @@ public class viewStudentAdapter extends RecyclerView.Adapter<viewStudentAdapter.
 
     public interface itemOnClick
     {
-        void itemDelete(int pos, viewStudentSingleModel model);
-        void itemEdit(viewStudentSingleModel model);
+        void itemDelete(int pos, viewItemModel model);
+        void itemEdit(viewItemModel model);
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView nameTV, addressTV,IDTV;
+        TextView nameTV, priceEt,authorEt,dateEt;
         Button deleteBtn, editBtn;
         ImageView imageView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            nameTV = (TextView) itemView.findViewById(R.id.tv_name_student);
-            addressTV = (TextView) itemView.findViewById(R.id.tv_address_student);
-            IDTV = (TextView) itemView.findViewById(R.id.tv_id_student);
+            nameTV = (TextView) itemView.findViewById(R.id.tv_item_name);
+            priceEt = (TextView) itemView.findViewById(R.id.tv_item_price);
+            authorEt = (TextView) itemView.findViewById(R.id.tv_item_author);
             deleteBtn = (Button) itemView.findViewById(R.id.btn_delete_single);
             editBtn = (Button) itemView.findViewById(R.id.btn_edit_student);
+            dateEt = (TextView) itemView.findViewById(R.id.tv_item_date);
             imageView = (ImageView) itemView.findViewById(R.id.imageView);
 
         }

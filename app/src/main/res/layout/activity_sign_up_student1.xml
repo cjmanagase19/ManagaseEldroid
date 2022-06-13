@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".signUpStudent1">
 
-    <TextView
-        android:id="@+id/tv_signup_student1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign up student"
-        android:textSize="35sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/btn_signup_student"
         android:layout_width="wrap_content"
@@ -35,7 +25,7 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_signup_student" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_signup" />
 
     <EditText
         android:id="@+id/et_password_student"
@@ -49,10 +39,10 @@
         app:layout_constraintTop_toBottomOf="@+id/et_username_student" />
 
     <TextView
-        android:id="@+id/tv_signup_student"
+        android:id="@+id/tv_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign up student"
+        android:text="Sign up"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

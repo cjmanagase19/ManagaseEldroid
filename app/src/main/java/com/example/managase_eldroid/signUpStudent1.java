@@ -46,25 +46,6 @@ public class signUpStudent1 extends AppCompatActivity {
         etUserName = (EditText) findViewById(R.id.et_username_student);
         signUpBtn = (Button) findViewById(R.id.btn_signup_student);
 
-        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        gsc = GoogleSignIn.getClient(this, gso);
-        gsc.signOut();
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-
-
-        if (mAuth != null) {
-            FirebaseAuth.getInstance().signOut();
-        }
-
-        if (acct != null) {
-            Bundle bundle = new Bundle(getIntent().getExtras());
-            if (bundle != null) {
-                etUserName.setText(bundle.getString("email"));
-                etUserName.setEnabled(false);
-            }
-        }
 
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
